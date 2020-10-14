@@ -1,0 +1,107 @@
+{
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "STAT_ID": 1219,
+                "IMG": "https://photos.plugshare.com/photos/605839.jpg",
+                "PLUG": [
+                    [
+                        "1",
+                        "/ccs.svg"
+                    ],
+                    [
+                        "2",
+                        "/type2.png"
+                    ],
+                    [
+                        "3",
+                        "/chademo.png"
+                    ]
+                ],
+                "FACILITYID": 28001,
+                "CAPACITY": "50KW",
+                "NAME": "Ideapark Oulu",
+                "ADDRESS": "Ritaharjuntie 49,90540 Oulu, Finland",
+                "payement": "required",
+                "PRICE": "Payment Required 0.19€/min",
+                "FACILITY": "Grocery, Shopping",
+                "HOURS": "24h/7",
+                "DESCRIPTIO": [
+                    "CCS/SAE",
+                    "CHAdeMO"
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.445345,
+                    65.076634
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STAT_ID": 1220,
+                "IMG": "https://photos.plugshare.com/photos/545836.jpg",
+                "PLUG": [
+                    "/ccs.svg",
+                    "/chademo.png",
+                    "/type2.png"
+                ],
+                "FACILITYID": 28001,
+                "CAPACITY": "60KW",
+                "NAME": "VTT konttori Linnanmaalla",
+                "ADDRESS": "Kaitoväylä 1,Oulu",
+                "payement": "free",
+                "PRICE": "Free",
+                "FACILITY": "Grocery, Shopping",
+                "HOURS": "24h/7",
+                "DESCRIPTIO": [
+                    "Type 2",
+                    "Wall (Euro)"
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.460917,
+                    65.058108
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "STAT_ID": 1221,
+                "IMG": "https://photos.plugshare.com/photos/582690.jpg",
+                "PLUG": [
+                    "/ccs.svg",
+                    "/chademo.png",
+                    "/type2.png"
+                ],
+                "FACILITYID": 28001,
+                "CAPACITY": "70KW",
+                "NAME": "K-Supermarket Toppila",
+                "ADDRESS": "Satamatie 26,90520 Oulu, Finland",
+                "payement": "required",
+                "PRICE": "Payment RequiredQuick charging 0, 20€/min, Type 2 0, 02€/min",
+                "FACILITY": "Grocery, Shopping",
+                "HOURS": "24h/7",
+                "DESCRIPTIO": [
+                    "Type 2",
+                    "CCS/SAE",
+                    "CHAdeMO"
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    25.440589,
+                    65.036055
+                ]
+            }
+        }
+    ]
+}
