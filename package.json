@@ -6,8 +6,7 @@
   "scripts": {
     "client-install": "npm install --prefix client ",
     "build": "cd client && npm run build",
-    "intall-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
+    "heroku-postbuild": "npm run client-install && npm run build",
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client",
