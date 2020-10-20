@@ -82,7 +82,7 @@ function Map() {
 
             <div className='heading'>
               <button onClick={login}>check In</button>
-              <img src={selectedStation.properties.IMG} alt="photo lost" />
+              <img src={selectedStation.properties.IMG} alt="img" />
             </div>
 
             <div className='title'>

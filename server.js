@@ -1,9 +1,8 @@
 const express = require('express');
 const colors = require('colors');
 const cors = require("cors");
+const path = require('path');
 require("dotenv").config({ path: './config/.env' });
-
-
 
 // 🔥 Express setup
 const app = express();
@@ -20,11 +19,10 @@ connectDB();
 // 🔥 Routes Setup
 app.use("/users", require("./routes/userRouter"));
 
-
-//🔥 deployment, serve static assets 
+// 🔥 serve static assets if in progress
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
 }
-
-
-
