@@ -2,7 +2,7 @@ const express = require('express');
 const colors = require('colors');
 const cors = require("cors");
 const path = require("path");
-require("dotenv").config({ path: './config/.env' });
+require("dotenv").config();
 
 // 🔥 Express setup
 const app = express();

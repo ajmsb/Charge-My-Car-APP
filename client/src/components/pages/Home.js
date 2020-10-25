@@ -5,18 +5,18 @@ import * as stationData from "../../data/stationsData.json";
 import { useHistory } from "react-router-dom";
 
 
+
 function Map() {
   const history = useHistory();
   const login = () => history.push("/login");
   const [viewport, setViewport] = useState({
-    container: 'map',
     latitude: 65.058108,
     longitude: 25.460917,
-    height: "100vh",
-    width: "100%",
-    zoom: 12,
-
+    height: '100vh',
+    width: '100%',
+    zoom: 11,
   });
+
 
   const [selectedStation, setselectedStation] = useState(null);
 
@@ -34,9 +34,7 @@ function Map() {
   }, []);
 
   return (
-
-    <div >
-
+    <div>
       <ReactMapGL
         {...viewport}
 
@@ -46,6 +44,7 @@ function Map() {
         }}
       >
         {stationData.features.map(station => (
+
           <Marker
             key={station.properties.STATION_ID}
             latitude={station.geometry.coordinates[1]}
@@ -64,19 +63,23 @@ function Map() {
         ))}
 
         {selectedStation ? (
-          <Popup
+
+          <Popup className="popup-btn"
             latitude={selectedStation.geometry.coordinates[1]}
             longitude={selectedStation.geometry.coordinates[0]}
             onClose={() => {
               setselectedStation(null);
             }}
           >
-            <div>
+            <div className="popup-info">
               <h3>{selectedStation.properties.NAME}</h3>
               <p>{selectedStation.properties.ADDRESS}{selectedStation.properties.DESCRIPTIO.map(plugs => <ul>{plugs}</ul>)}</p>
             </div>
           </Popup>
+
         ) : null}
+
+
         {selectedStation ? (
           <div className='sidebar'>
 
@@ -85,32 +88,29 @@ function Map() {
               <img src={selectedStation.properties.IMG} alt="img" />
             </div>
 
-            <div className='title'>
+            <div className='sidebar-title'>
               <h3>{selectedStation.properties.NAME}</h3>
-              <div className="info"><p>{selectedStation.properties.ADDRESS}</p>{selectedStation.properties.DESCRIPTIO.map(plugs => <ul>{plugs}</ul>)} <p>{selectedStation.properties.CAPACITY}</p></div>
+              <div><p>{selectedStation.properties.ADDRESS}</p>{selectedStation.properties.DESCRIPTIO.map(plugs => <ul>{plugs}</ul>)} <p className="sidebar-capacity">{selectedStation.properties.CAPACITY}</p></div>
             </div>
 
-            <div className='listings'>
+            <div className='sidebar-information'>
               <h4>Cost per minutes</h4>
-              <p className="list">{selectedStation.properties.PRICE}</p>
+              <p>{selectedStation.properties.PRICE}</p>
               <h4>Amenities</h4>
-              <p className="list">{selectedStation.properties.FACILITY}</p>
+              <p>{selectedStation.properties.FACILITY}</p>
               <h4>Hours</h4>
-              <p className="list">{selectedStation.properties.HOURS}</p>
+              <p>{selectedStation.properties.HOURS}</p>
             </div>
 
-            <div className="plugs" >
+            <div className="sidebar-plugs" >
               <h4>Plugs</h4>
               {selectedStation.properties.DESCRIPTIO.map(plugs => <ul>{plugs}</ul>)}
             </div>
 
           </div>
         ) : null}
-
-      </ReactMapGL>
-
-    </div >
-
+      </ReactMapGL >
+    </div>
   );
 }
 
