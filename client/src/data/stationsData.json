@@ -6,28 +6,18 @@
                 "STAT_ID": 1219,
                 "IMG": "https://photos.plugshare.com/photos/605839.jpg",
                 "PLUG": [
-                    [
-                        "1",
-                        "/ccs.svg"
-                    ],
-                    [
-                        "2",
-                        "/type2.png"
-                    ],
-                    [
-                        "3",
-                        "/chademo.png"
-                    ]
+                    "/ccs.svg",
+                    "/chademo.png"
                 ],
                 "FACILITYID": 28001,
-                "CAPACITY": "50KW",
+                "CAPACITY": "50",
                 "NAME": "Ideapark Oulu",
                 "ADDRESS": "Ritaharjuntie 49,90540 Oulu, Finland",
                 "payement": "required",
-                "PRICE": "Payment Required 0.19€/min",
+                "PRICE": 0.19,
                 "FACILITY": "Grocery, Shopping",
                 "HOURS": "24h/7",
-                "DESCRIPTIO": [
+                "DESCRIPTION": [
                     "CCS/SAE",
                     "CHAdeMO"
                 ]
@@ -51,14 +41,14 @@
                     "/type2.png"
                 ],
                 "FACILITYID": 28001,
-                "CAPACITY": "60KW",
+                "CAPACITY": "60",
                 "NAME": "VTT konttori Linnanmaalla",
                 "ADDRESS": "Kaitoväylä 1,Oulu",
                 "payement": "free",
-                "PRICE": "Free",
+                "PRICE": 0,
                 "FACILITY": "Grocery, Shopping",
                 "HOURS": "24h/7",
-                "DESCRIPTIO": [
+                "DESCRIPTION": [
                     "Type 2",
                     "Wall (Euro)"
                 ]
@@ -82,14 +72,14 @@
                     "/type2.png"
                 ],
                 "FACILITYID": 28001,
-                "CAPACITY": "70KW",
+                "CAPACITY": "70",
                 "NAME": "K-Supermarket Toppila",
                 "ADDRESS": "Satamatie 26,90520 Oulu, Finland",
                 "payement": "required",
-                "PRICE": "Payment RequiredQuick charging 0, 20€/min, Type 2 0, 02€/min",
+                "PRICE": 0.20,
                 "FACILITY": "Grocery, Shopping",
                 "HOURS": "24h/7",
-                "DESCRIPTIO": [
+                "DESCRIPTION": [
                     "Type 2",
                     "CCS/SAE",
                     "CHAdeMO"

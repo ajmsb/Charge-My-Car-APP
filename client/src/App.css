@@ -19,9 +19,23 @@ a {
   text-decoration: unset;
 }
 p{
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  color: grey;
+  color:slategray;
+}
+.sidebar-title-address{
+  color: white;
+}
+.sidebar-plug-p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+  color: white;
+}
+span{
+  color: white;
+  font-size: 1rem;
+  padding: 2rem;
 }
 
 button
@@ -74,8 +88,6 @@ input[type="submit"]{
 .nav-menu {
   padding: 0 1rem;
 }
-
-
 
 /* 🔥 FORM STYLE */
 .form-decoration{
@@ -139,23 +151,27 @@ position: fixed;
   background-color: #0F2027;
   position: relative;
   width: 22rem;
-  height: 100%;
-  overflow: scroll;
+  height: 100vh;
+  overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }
 
 .heading {
-  height: 15rem;
+  height: 21%;
 }
 .heading img{
   height: 100%;
 }
-
-.heading button  {
+.btn button:hover {
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  background-color: #2C5364;
+  transition: all 0.2s ease-out;
+}
+.btn button {
   position: absolute;
-  top: 17%;
+  top: 12%;
   left: 75%;
-  background: yellowgreen;
+  background: teal;
   text-align: center;
   width: 70px;
   height: 70px;
@@ -165,7 +181,7 @@ position: fixed;
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  color: rgb(1, 75, 75);
+  color: white;
   font-weight: bold;
   text-decoration: none;
   padding: 0;
@@ -179,7 +195,7 @@ position: fixed;
   background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
 }
 .sidebar-title h3{
-  font-size: 1.5em;
+  font-size: 1.26em;
   color: white;
   font-weight: bold;
 }
@@ -207,10 +223,13 @@ color: rgb(0, 189, 193);
 
 .sidebar-plugs{ 
   font-size: 1rem;
-  min-height: 20rem;
   padding: 5%;
-  background-color: teal;
   border-top: solid #cbdce4 1px;
+}
+
+.sidebar-plugs h3{
+  color: white;
+  margin-bottom: 1rem;
 }
 
 .sidebar-plugs ul

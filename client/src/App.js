@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from './components/pages/Home'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
+import Home from './components/pages/Home';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 import Navbar from './components/layout/Navbar';
 import UserContext from "./context/UserContext";
 import Axios from "axios";

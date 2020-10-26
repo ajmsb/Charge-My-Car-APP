@@ -1,14 +1,38 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import * as stationData from "../../data/stationsData.json";
 import { useHistory } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 
 
 function Map() {
+  const { userData } = useContext(UserContext);
   const history = useHistory();
   const login = () => history.push("/login");
+
+  const [seconds, setSeconds] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  let minutes = Math.floor(seconds / 60);
+  let cost = useState(0);
+
+  useEffect(() => {
+    // console.log('first render', seconds);
+
+    if (isRunning) {
+      const id = window.setInterval(() => {
+        // console.log('tick', seconds);
+
+        setSeconds(seconds => seconds + 1)
+      }, 1000);
+      return () => window.clearInterval(id)
+    }
+    return undefined;
+  }, [isRunning]);
+
+
+
   const [viewport, setViewport] = useState({
     latitude: 65.058108,
     longitude: 25.460917,
@@ -18,12 +42,12 @@ function Map() {
   });
 
 
-  const [selectedStation, setselectedStation] = useState(null);
+  const [selectedStation, setSelectedStation] = useState(null);
 
   useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
-        setselectedStation(null);
+        setSelectedStation(null);
       }
     };
     window.addEventListener("keydown", listener);
@@ -37,8 +61,7 @@ function Map() {
     <div>
       <ReactMapGL
         {...viewport}
-
-        mapboxApiAccessToken={process.env.MAP_BOX_TOKEN = "pk.eyJ1Ijoia29taHVzdGxhIiwiYSI6ImNrZzN3aGdlcjBlczcycG81NnlsZjdnYmcifQ.pPluRgXMNX6i5LFd0K3oNA"}
+        mapboxApiAccessToken={process.env.REACT_APP_TOKEN = "pk.eyJ1Ijoia29taHVzdGxhIiwiYSI6ImNrZzN3aGdlcjBlczcycG81NnlsZjdnYmcifQ.pPluRgXMNX6i5LFd0K3oNA"}
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
@@ -46,7 +69,7 @@ function Map() {
         {stationData.features.map(station => (
 
           <Marker
-            key={station.properties.STATION_ID}
+            key={station.properties.STAT_ID}
             latitude={station.geometry.coordinates[1]}
             longitude={station.geometry.coordinates[0]}
           >
@@ -54,7 +77,7 @@ function Map() {
               className="marker-btn"
               onClick={e => {
                 e.preventDefault();
-                setselectedStation(station);
+                setSelectedStation(station);
               }}
             >
               <img src="/gas-station.svg" alt="Station Icon" />
@@ -68,12 +91,15 @@ function Map() {
             latitude={selectedStation.geometry.coordinates[1]}
             longitude={selectedStation.geometry.coordinates[0]}
             onClose={() => {
-              setselectedStation(null);
+              setSelectedStation(null);
             }}
           >
             <div className="popup-info">
               <h3>{selectedStation.properties.NAME}</h3>
-              <p>{selectedStation.properties.ADDRESS}{selectedStation.properties.DESCRIPTIO.map(plugs => <ul>{plugs}</ul>)}</p>
+              <p>{selectedStation.properties.ADDRESS}</p>
+              {selectedStation.properties.DESCRIPTION.map(plugs => <p className="sidebar-capacity" key={plugs}> {plugs} </p>)
+              }
+              <p>{selectedStation.properties.PRICE} €/minute</p>
             </div>
           </Popup>
 
@@ -81,36 +107,67 @@ function Map() {
 
 
         {selectedStation ? (
-          <div className='sidebar'>
+
+          < div className='sidebar'>
+
+            <div className="btn">
+              {userData.user ? (
+
+                isRunning ? (<button className='heading' onClick={() => {
+                  setIsRunning(false);
+                  // console.log("cost is: " + cost);
+
+                }}>Stop Charge</button>
+                ) : (
+                    <button className='heading' onClick={() => { setIsRunning(true); }}>Start Charge</button>
+                  )
+
+
+              ) : (
+                  <button className='heading' onClick={login}>Charge</button>
+
+                )}
+            </div>
 
             <div className='heading'>
-              <button onClick={login}>check In</button>
               <img src={selectedStation.properties.IMG} alt="img" />
             </div>
 
             <div className='sidebar-title'>
               <h3>{selectedStation.properties.NAME}</h3>
-              <div><p>{selectedStation.properties.ADDRESS}</p>{selectedStation.properties.DESCRIPTIO.map(plugs => <ul>{plugs}</ul>)} <p className="sidebar-capacity">{selectedStation.properties.CAPACITY}</p></div>
+              <div>
+                <p className="sidebar-capacity">{selectedStation.properties.ADDRESS}</p>
+                <h4>Plugs types: </h4>
+                {selectedStation.properties.DESCRIPTION.map(plugs => <p className="sidebar-capacity" key={plugs}> {plugs} </p>)
+                }
+                <h4>Electric Capacity: </h4>
+                <p className="sidebar-capacity">{selectedStation.properties.CAPACITY}KW</p>
+              </div>
             </div>
 
             <div className='sidebar-information'>
-              <h4>Cost per minutes</h4>
-              <p>{selectedStation.properties.PRICE}</p>
-              <h4>Amenities</h4>
+              <h4>Cost per minutes:</h4>
+              <p>{selectedStation.properties.PRICE} €/minute</p>
+              <h4>Amenities:</h4>
               <p>{selectedStation.properties.FACILITY}</p>
-              <h4>Hours</h4>
+              <h4>Hours:</h4>
               <p>{selectedStation.properties.HOURS}</p>
             </div>
 
-            <div className="sidebar-plugs" >
-              <h4>Plugs</h4>
-              {selectedStation.properties.DESCRIPTIO.map(plugs => <ul>{plugs}</ul>)}
+            <div className='sidebar-plugs' >
+              <h3>Charging Status:</h3>
+              <p className="sidebar-plug-p">Time of charging in Seconds:</p>
+              <p className="sidebar-capacity">{seconds} Seconds </p>
+              <p className="sidebar-plug-p">Price of Charging in Euro:</p>
+              <p className="sidebar-capacity">{
+                selectedStation.properties.PRICE === 0 ? (<>Free</>) : (cost = (minutes * selectedStation.properties.PRICE).toFixed(2))
+              } € for {minutes} minutes </p>
             </div>
-
           </div>
-        ) : null}
+        ) : null
+        }
       </ReactMapGL >
-    </div>
+    </div >
   );
 }
 

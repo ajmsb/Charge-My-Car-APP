@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
-import Home from '../pages/Home'
+// import Home from '../pages/Home'
 
 
 
@@ -42,7 +42,7 @@ function Register() {
 
     return (
         <div>
-            < Home />
+            {/* < Home /> */}
 
             <div className="form-decoration">
                 <div className="background-decoration">

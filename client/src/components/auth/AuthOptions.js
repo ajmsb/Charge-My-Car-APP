@@ -16,12 +16,19 @@ function AuthOptions() {
             user: undefined,
         });
         localStorage.setItem("auth-token", "");
+        history.push("/");
     };
 
     return (
         <nav className="nav-menu">
             {userData.user ? (
-                <button onClick={logout} className="b1">log out</button>
+                <div>
+                    <span className="navbar-span">Welcome {userData.user.displayName}</span>
+                    <button onClick={logout} className="b1">log out</button>
+
+                </div>
+
+
             ) : (
                     <>
                         <button onClick={login} className="b1">login</button>

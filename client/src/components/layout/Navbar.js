@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthOptions from "../auth/AuthOptions";
 
-export class Navbar extends Component {
+class Navbar extends Component {
 
 
     render() {
@@ -11,8 +11,10 @@ export class Navbar extends Component {
                 <div>
                     <Link to="/" className="navbar-logo">ChargemyCar</Link>
                 </div>
+                <div>
+                    <AuthOptions />
+                </div>
 
-                <AuthOptions />
 
             </nav>
         )
