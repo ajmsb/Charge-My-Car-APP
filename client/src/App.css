@@ -32,10 +32,19 @@ p{
   padding: 0.2rem 0;
   color: white;
 }
-span{
-  color: white;
+
+.error-notice span{
+  color: #203A43;
   font-size: 1rem;
-  padding: 2rem;
+  padding-right: 1rem;
+}
+.error-notice button {
+color: teal;
+padding: 0;
+margin: 0;
+}
+.error-notice button:hover{
+  background-color: transparent;
 }
 
 button
@@ -77,6 +86,9 @@ input[type="submit"]{
   justify-content: space-between;
   align-items: center;
 }
+.navbar-span{
+  color: white;
+}
 
 .navbar-logo {
   padding: 0 2rem;
@@ -90,18 +102,20 @@ input[type="submit"]{
 }
 
 /* 🔥 FORM STYLE */
+
+
 .form-decoration{
-position: fixed;
-    top: 3.5rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    outline: black 2px;
-    background-color: rgba(0, 0, 0, .7);
-    z-index: 1000;
+  position: fixed;
+  top: 3.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: black 2px;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
 }
 .background-decoration{
-position: fixed;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -160,13 +174,10 @@ position: fixed;
   height: 21%;
 }
 .heading img{
-  height: 100%;
+  /* height: auto; */
+  width: 100%;
 }
-.btn button:hover {
-  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
-  background-color: #2C5364;
-  transition: all 0.2s ease-out;
-}
+
 .btn button {
   position: absolute;
   top: 12%;
@@ -188,12 +199,18 @@ position: fixed;
   box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }
 
+.btn button:hover {
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  background-color: #2C5364;
+  transition: all 0.2s ease-out;
+}
 
 .sidebar-title {
   padding: 5%;
   overflow: hidden;
   background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
 }
+
 .sidebar-title h3{
   font-size: 1.26em;
   color: white;
