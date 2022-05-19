@@ -1,6 +1,10 @@
 # charge_mycar
 School project made with MERN stack
 
+# Screenshot
+https://drive.google.com/file/d/18uxccsKNFibFdjRJ7pr85l_sFQCLvyUa/view?usp=sharing
+
+
 # tools used 
 Node js, Express js, React js, MongoDb
 
