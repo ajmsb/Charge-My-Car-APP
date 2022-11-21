@@ -1,11 +1,10 @@
-# charge_mycar
+# Charge my Car APP
 School project made with MERN stack
 
 # Screenshot
-https://drive.google.com/file/d/18uxccsKNFibFdjRJ7pr85l_sFQCLvyUa/view?usp=sharing
+<img src="http://141.145.204.63/wp-content/uploads/2022/09/Capture.jpg">
 
-
-# tools used 
+# Technologies
 Node js, Express js, React js, MongoDb
 
 # How to run the app
